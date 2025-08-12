@@ -22,7 +22,7 @@ const criarTarefa = (event) => {
   tarefa.innerHTML = conteudo; // innerHTML permite voce acessar ou modificar o conteudo HTML interno de um elemento.
   tarefa.appendChild(BotaoConclui());
 
-  input.value = "";
+  input.value = " ";
 };
 
 const novaTarefa = document.querySelector(".form-button");
@@ -30,7 +30,7 @@ novaTarefa.addEventListener("click", criarTarefa);
 
 const BotaoConclui = () => {
   const botao = document.createElement("button");
-  botao.classList.add("check-button");  
+  botao.classList.add("check-button");
   botao.innerText = "concluir";
   botao.addEventListener("click", () => {
     console.log("Fui clicado");
