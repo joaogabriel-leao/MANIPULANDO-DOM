@@ -18,23 +18,27 @@ const criarTarefa = (event) => {
 
   tarefa.classList.add("task"); // add uma classe css a um elemento HTML
 
-  const conteudo = `${valor}`; // utilizando o template
+  const conteudo = `<p class="content">${valor}</p>`; // utilizando o template
   tarefa.innerHTML = conteudo; // innerHTML permite voce acessar ou modificar o conteudo HTML interno de um elemento.
   tarefa.appendChild(BotaoConclui());
 
-  input.value = " ";
+  input.value = "";
 };
 
 const novaTarefa = document.querySelector(".form-button");
 novaTarefa.addEventListener("click", criarTarefa);
 
 const BotaoConclui = () => {
-  const botao = document.createElement("button");
-  botao.classList.add("check-button");
-  botao.innerText = "concluir";
-  botao.addEventListener("click", () => {
-    console.log("Fui clicado");
-  });
+  const botaoConclui = document.createElement("button");
+  botaoConclui.classList.add("check-button");
+  botaoConclui.innerText = "concluir";
+  botaoConclui.addEventListener("click", TarefaConcluida);
 
-  return botao;
+  return botaoConclui;
+};
+
+const TarefaConcluida = (evento) => {
+  const botaoConclui = evento.target; // Dando acesso ao elemento clicado, identifica qual elemento disparou o evento de clique.
+  const tarefaCompleta = botaoConclui.parentElement; // Acessar o elemento que contém tanto o texto quanto o botão de concluir (tarefa completa)
+  tarefaCompleta.classList.toggle("done"); // classe done responsável por aplicar o efeito de rabisco na tarefa
 };
